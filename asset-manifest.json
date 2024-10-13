@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/admin-shd/static/css/main.f669ed86.css",
+    "main.js": "/admin-shd/static/js/main.229b52e2.js",
+    "index.html": "/admin-shd/index.html",
+    "main.f669ed86.css.map": "/admin-shd/static/css/main.f669ed86.css.map",
+    "main.229b52e2.js.map": "/admin-shd/static/js/main.229b52e2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f669ed86.css",
+    "static/js/main.229b52e2.js"
+  ]
+}
