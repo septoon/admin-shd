@@ -39,6 +39,7 @@ function App() {
 
   return (
     <div className="p-2 bg-gray-100 min-h-screen">
+    <ToastContainer />
       <h1 className="text-3xl font-bold text-center mb-8">Админ панель</h1>
       {data && Object.keys(data).map(category => (
         <CategoryEditor
