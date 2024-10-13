@@ -6,7 +6,7 @@ const Vacancies = () => {
   const navigate = useNavigate()
   return (
     <div>
-      <h1>Vacancies</h1>
+      <h1>Вакансии</h1>
       <BackButton onClick={() => navigate('/')} />
     </div>
   )

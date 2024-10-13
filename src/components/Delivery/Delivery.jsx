@@ -6,7 +6,7 @@ const Delivery = () => {
   const navigate = useNavigate()
   return (
     <div>
-      <h1>Delivery</h1>
+      <h1>Доставка</h1>
       <BackButton onClick={() => navigate('/')} />
     </div>
   )
