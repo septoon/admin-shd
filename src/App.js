@@ -1,58 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import CategoryEditor from './components/CategoryEditor';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import WebApp from '@twa-dev/sdk';
+import { Link, Outlet } from 'react-router-dom';
+
+import Menu from './assets/img/menu.png'
+import Contacts from './assets/img/contacts.png'
+import Delivery from './assets/img/delivery.png'
+import Vacancy from './assets/img/vacancy.png'
 
 function App() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     WebApp.ready();
-    WebApp.expand()
+    WebApp.expand();
+  }, [])
 
-    axios.get('https://api.shashlichny-dom.ru/api/data')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        toast.error('Failed to load data.');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  const saveData = (updatedData) => {
-    axios.put('https://api.shashlichny-dom.ru/api/save', updatedData)
-      .then(() => toast.success('Data saved successfully!'))
-      .catch(error => {
-        console.error('Error saving data:', error);
-        toast.error('Failed to save data.');
-      });
-  };
-
-  if (loading) return <div>Loading...</div>;
+  const linkClassName = 'w-[80%] h-20 flex justify-start pl-5 items-center mb-5 bg-silver dark:bg-darkGray rounded-lg';
 
   return (
-    <div className="p-2 bg-gray-100 min-h-screen">
-    <ToastContainer />
-      <h1 className="text-3xl font-bold text-center mb-8">Админ панель</h1>
-      {data && Object.keys(data).map(category => (
-        <CategoryEditor
-          key={category}
-          category={category}
-          items={data[category]}
-          onSave={(updatedItems) => {
-            const updatedData = { ...data, [category]: updatedItems };
-            setData(updatedData);
-            saveData(updatedData);
-          }}
-        />
-      ))}
+    <div className="p-2 w-full h-full flex flex-col justify-start items-center bg-gray-100 min-h-screen">
+      <ToastContainer />
+      <h1 className="text-3xl font-bold text-center mb-16">Админ панель</h1>
+
+      <Link to="/menu" className={linkClassName}>
+        <img src={Menu} className="h-5 mr-3" alt="kitchen" />
+        <span className="dark:text-white">Меню</span>
+      </Link>
+      <Link to="/contacts" className={linkClassName}>
+        <img src={Contacts} className="h-5 mr-3" alt="bar" />
+        <span className="dark:text-white">Контакты</span>
+      </Link>
+      <Link to="/delivery" className={linkClassName}>
+        <img src={Delivery} className="h-5 mr-3" alt="grill" />
+        <span className="dark:text-white">Доставка</span>
+      </Link>
+      <Link to="/vacancies" className={linkClassName}>
+        <img src={Vacancy} className="h-5 mr-3" alt="household" />
+        <span className="dark:text-white">Вакансии</span>
+      </Link>
+      <Outlet />
     </div>
   );
 }
