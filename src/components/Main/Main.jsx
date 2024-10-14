@@ -17,19 +17,19 @@ const Main = () => {
       {
         chatIds.includes(WebApp.initDataUnsafe.user.id) ? (
         <>
-          <Link to="/menu" className={linkClassName}>
+          <Link to="/menu" onClick={() => WebApp.HapticFeedback.impactOccurred('medium')} className={linkClassName}>
             <img src={menuIcon} className="h-5 mr-3" alt="menu" />
             <span className="dark:text-white">Меню</span>
           </Link>
-          <Link to="/contacts" className={linkClassName}>
+          <Link to="/contacts" onClick={() => WebApp.HapticFeedback.impactOccurred('medium')} className={linkClassName}>
             <img src={contactsIcon} className="h-5 mr-3" alt="contacts" />
             <span className="dark:text-white">Контакты</span>
           </Link>
-          <Link to="/delivery" className={linkClassName}>
+          <Link to="/delivery" onClick={() => WebApp.HapticFeedback.impactOccurred('medium')} className={linkClassName}>
             <img src={deliveryIcon} className="h-5 mr-3" alt="delivery" />
             <span className="dark:text-white">Доставка</span>
           </Link>
-          <Link to="/vacancies" className={linkClassName}>
+          <Link to="/vacancies" onClick={() => WebApp.HapticFeedback.impactOccurred('medium')} className={linkClassName}>
             <img src={vacancyIcon} className="h-5 mr-3" alt="vacancies" />
             <span className="dark:text-white">Вакансии</span>
           </Link>

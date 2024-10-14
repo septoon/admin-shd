@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 const Delivery = () => {
   const navigate = useNavigate()
   return (
-    <div>
-      <h1>Доставка</h1>
-      <BackButton onClick={() => navigate('/')} />
+    <div className='w-full h-full flex justify-center items-center'>
+      <h1 className='w-3/5'>Скоро тут появится админ панель раздела "Доставка"</h1>
+      <BackButton onClick={() => navigate('/admin-shd')} />
     </div>
   )
 }

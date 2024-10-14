@@ -23,11 +23,11 @@ function CategoryEditor({ category, items, onUpdate }) {
     <div className="card flex w-full justify-center overflow-y-scroll pt-5">
       <Accordion
         activeIndex={activeIndexes}
-        className="w-full pb-12"
+        className="w-full"
         onTabChange={onTabChange}>
         <AccordionTab contentClassName='accord'
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
-          headerClassName='accord'
+          headerClassName='font-bold pb-4'
           key={category}
           header={category}>
           {editingItems.map((item, index) => (
