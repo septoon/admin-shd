@@ -1,23 +1,16 @@
 {
   "files": {
-    "main.css": "/admin-shd/static/css/main.df8037f6.css",
-    "main.js": "/admin-shd/static/js/main.87e99cdb.js",
-    "static/media/InterVariable-Italic.woff2": "/admin-shd/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
-    "static/media/InterVariable.woff2": "/admin-shd/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
-    "static/media/primeicons.svg": "/admin-shd/static/media/primeicons.6ed59f962963a4a73af2.svg",
-    "static/media/primeicons.eot": "/admin-shd/static/media/primeicons.ff0c4cd79b2ffca2de54.eot",
-    "static/media/primeicons.woff": "/admin-shd/static/media/primeicons.8931fda1930c3bd21e96.woff",
-    "static/media/primeicons.ttf": "/admin-shd/static/media/primeicons.a5c2a53d1ff7a9ff5933.ttf",
+    "main.css": "/admin-shd/static/css/main.178a1083.css",
+    "main.js": "/admin-shd/static/js/main.9a43def2.js",
     "static/media/vacancy.png": "/admin-shd/static/media/vacancy.6e49cb0c3be3dfea0723.png",
-    "static/media/primeicons.woff2": "/admin-shd/static/media/primeicons.024b32cc7bf399b1a847.woff2",
     "static/media/contacts.png": "/admin-shd/static/media/contacts.ef28ad031e2132ade878.png",
     "static/media/delivery.png": "/admin-shd/static/media/delivery.ffc663602509abacf635.png",
     "index.html": "/admin-shd/index.html",
-    "main.df8037f6.css.map": "/admin-shd/static/css/main.df8037f6.css.map",
-    "main.87e99cdb.js.map": "/admin-shd/static/js/main.87e99cdb.js.map"
+    "main.178a1083.css.map": "/admin-shd/static/css/main.178a1083.css.map",
+    "main.9a43def2.js.map": "/admin-shd/static/js/main.9a43def2.js.map"
   },
   "entrypoints": [
-    "static/css/main.df8037f6.css",
-    "static/js/main.87e99cdb.js"
+    "static/css/main.178a1083.css",
+    "static/js/main.9a43def2.js"
   ]
 }
