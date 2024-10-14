@@ -55,7 +55,7 @@ const Menu = () => {
         }}
       />
     ))}
-    <BackButton onClick={() => navigate('/')} />
+    <BackButton onClick={() => navigate('/admin-shd')} />
    </div>
   )
 }
