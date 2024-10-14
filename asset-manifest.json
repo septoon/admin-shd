@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/admin-shd/static/css/main.e7883181.css",
-    "main.js": "/admin-shd/static/js/main.0432d057.js",
+    "main.js": "/admin-shd/static/js/main.cdfe7fd3.js",
     "static/media/vacancy.png": "/admin-shd/static/media/vacancy.6e49cb0c3be3dfea0723.png",
     "static/media/contacts.png": "/admin-shd/static/media/contacts.ef28ad031e2132ade878.png",
     "static/media/delivery.png": "/admin-shd/static/media/delivery.ffc663602509abacf635.png",
     "index.html": "/admin-shd/index.html",
     "main.e7883181.css.map": "/admin-shd/static/css/main.e7883181.css.map",
-    "main.0432d057.js.map": "/admin-shd/static/js/main.0432d057.js.map"
+    "main.cdfe7fd3.js.map": "/admin-shd/static/js/main.cdfe7fd3.js.map"
   },
   "entrypoints": [
     "static/css/main.e7883181.css",
-    "static/js/main.0432d057.js"
+    "static/js/main.cdfe7fd3.js"
   ]
 }
