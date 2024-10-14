@@ -1,3 +1,4 @@
+import WebApp from '@twa-dev/sdk';
 import React from 'react';
 
 function ItemEditor({ item, onChange }) {
@@ -7,6 +8,7 @@ function ItemEditor({ item, onChange }) {
   };
 
   const toggleStopList = () => {
+    WebApp.HapticFeedback.impactOccurred('soft')
     onChange({ ...item, onStop: !item.onStop });
   };
 
@@ -22,8 +24,7 @@ function ItemEditor({ item, onChange }) {
           className="rounded-md min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
           alt="pic"
         />
-        <div className="flex flex-col w-full h-full justify-around pl-2">
-          <div className="item_name">
+        <div className="flex flex-col w-1/2 h-full justify-around px-1">
             <input
               type="text"
               name="name"
@@ -32,8 +33,6 @@ function ItemEditor({ item, onChange }) {
               placeholder="Название"
               className="p-2 border w1/3 border-gray-300 rounded"
             />
-          </div>
-          <div className="columns">
             {item.options ? (
               <input
                 type="text"
@@ -53,7 +52,6 @@ function ItemEditor({ item, onChange }) {
                 className="p-2 border border-gray-300 rounded"
               />
             )}
-          </div>
           <div className="w-full flex flex-row justify-between items-center pr-2">
             <span className="text-gray-500">Цена:</span>
             <div>
@@ -63,7 +61,7 @@ function ItemEditor({ item, onChange }) {
                 value={item.price || ''}
                 onChange={handleChange}
                 placeholder="Цена"
-                className="p-2 border w-12 border-gray-300 rounded"
+                className="p-2 border w-16 border-gray-300 rounded"
               />
               <span className="text-gray-500"> ₽</span>
             </div>
@@ -81,7 +79,7 @@ function ItemEditor({ item, onChange }) {
         />
         <button
           onClick={toggleStopList}
-          className={`rounded-md px-2 text-white ${item.onStop ? 'bg-red-400' : 'bg-orange-400'}`}
+          className={`rounded-md px-2 text-white ${item.onStop ? 'bg-red' : 'bg-orange'}`}
         >
           {item.onStop ? 'Убрать из стоп листа' : 'Добавить в стоп лист'}
         </button>

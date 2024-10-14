@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import WebApp from '@twa-dev/sdk';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import CategoryEditor from './CategoryEditor';
 import { toast } from 'react-toastify';
-import { BackButton } from '@twa-dev/sdk/react';
+import { BackButton, MainButton } from '@twa-dev/sdk/react';
 
 const Menu = () => {
   const [data, setData] = useState(null);
@@ -12,9 +12,6 @@ const Menu = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    WebApp.ready();
-    WebApp.expand();
-
     axios
       .get('https://api.shashlichny-dom.ru/api/data')
       .then((response) => {
@@ -22,42 +19,50 @@ const Menu = () => {
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        toast.error('Failed to load data.');
+        toast.error('Ошибка загрузки данных.');
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-  const saveData = (updatedData) => {
+  const handleCategoryUpdate = (category, updatedItems) => {
+    setData(prevData => ({
+      ...prevData,
+      [category]: updatedItems,
+    }));
+  };
+
+  const saveData = () => {
+    WebApp.HapticFeedback.impactOccurred('heavy')
     axios
-      .put('https://api.shashlichny-dom.ru/api/save', updatedData)
+      .put('https://api.shashlichny-dom.ru/api/save', data)
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);
-        toast.error('Failed to save data.');
+        toast.error('Ошибка обновления данных.');
       });
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return (
+    <div className='w-full h-full flex justify-center items-center'>
+      <span className='text-dark dark:text-white'>Звгрузка...</span>
+    </div>  )
 
   return (
-   <div>
-     {data && Object.keys(data).map(category => (
-      <CategoryEditor
-        key={category}
-        category={category}
-        items={data[category]}
-        onSave={(updatedItems) => {
-          const updatedData = { ...data, [category]: updatedItems };
-          setData(updatedData);
-          saveData(updatedData);
-        }}
-      />
-    ))}
-    <BackButton onClick={() => navigate('/admin-shd')} />
-   </div>
-  )
-}
+    <div className='w-full pb-20'> 
+      {data && Object.keys(data).map(category => (
+        <CategoryEditor
+          key={category}
+          category={category}
+          items={data[category]}
+          onUpdate={(updatedItems) => handleCategoryUpdate(category, updatedItems)}
+        />
+      ))}
+      <BackButton onClick={() => navigate('/admin-shd')} />
+      <MainButton text='Сохранить изменения' onClick={saveData} />
+    </div>
+  );
+};
 
-export default Menu
+export default Menu;

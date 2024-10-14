@@ -5,17 +5,14 @@ import { memo } from 'react';
 import WebApp from '@twa-dev/sdk';
 import '../../custom.css';
 
-function CategoryEditor({ category, items, onSave }) {
+function CategoryEditor({ category, items, onUpdate }) {
   const [editingItems, setEditingItems] = useState(items);
   const [activeIndexes, setActiveIndexes] = useState([0, 1]);
-
-  const handleSave = () => {
-    onSave(editingItems);
-  };
 
   const handleChange = (index, updatedItem) => {
     const newItems = editingItems.map((item, i) => (i === index ? updatedItem : item));
     setEditingItems(newItems);
+    onUpdate(newItems); // Передаем обновленные элементы в Menu
   };
 
   const onTabChange = (e) => {
@@ -23,16 +20,15 @@ function CategoryEditor({ category, items, onSave }) {
   };
 
   return (
-    <div className="mb-8 p-1 bg-white rounded-lg shadow">
+    <div className="card flex w-full justify-center overflow-y-scroll pt-5">
       <Accordion
         activeIndex={activeIndexes}
-        className="w-full py-4 font-bold text-lg"
+        className="w-full pb-12"
         onTabChange={onTabChange}>
-        <AccordionTab
-          contentClassName="font-light py-0 text-sm"
+        <AccordionTab contentClassName='accord'
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
-          headerClassName="accord"
-          key={items.id}
+          headerClassName='accord'
+          key={category}
           header={category}>
           {editingItems.map((item, index) => (
             <ItemEditor
@@ -43,11 +39,6 @@ function CategoryEditor({ category, items, onSave }) {
           ))}
         </AccordionTab>
       </Accordion>
-      <button
-        onClick={handleSave}
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        Сохранить {category}
-      </button>
     </div>
   );
 }

@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   return (
-    <div className="p-2 w-full h-full flex flex-col justify-start items-center bg-gray-100 min-h-screen">
+    <div className="p-2 w-full h-full flex flex-col justify-start items-center bg-gray-100 min-h-screen overflow-hidden">
       <ToastContainer />
       <Routes>
         <Route exact path="/admin-shd" element={<Main />} />
