@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/admin-shd/static/css/main.5f238d34.css",
-    "main.js": "/admin-shd/static/js/main.c48dc9d4.js",
+    "main.css": "/admin-shd/static/css/main.8f7a65d5.css",
+    "main.js": "/admin-shd/static/js/main.53914b74.js",
     "static/media/vacancy.png": "/admin-shd/static/media/vacancy.6e49cb0c3be3dfea0723.png",
     "static/media/contacts.png": "/admin-shd/static/media/contacts.ef28ad031e2132ade878.png",
     "static/media/delivery.png": "/admin-shd/static/media/delivery.ffc663602509abacf635.png",
     "index.html": "/admin-shd/index.html",
-    "main.5f238d34.css.map": "/admin-shd/static/css/main.5f238d34.css.map",
-    "main.c48dc9d4.js.map": "/admin-shd/static/js/main.c48dc9d4.js.map"
+    "main.8f7a65d5.css.map": "/admin-shd/static/css/main.8f7a65d5.css.map",
+    "main.53914b74.js.map": "/admin-shd/static/js/main.53914b74.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f238d34.css",
-    "static/js/main.c48dc9d4.js"
+    "static/css/main.8f7a65d5.css",
+    "static/js/main.53914b74.js"
   ]
 }
