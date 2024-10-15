@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/admin-shd/static/css/main.7d5b22f8.css",
-    "main.js": "/admin-shd/static/js/main.c562b081.js",
+    "main.css": "/admin-shd/static/css/main.5f238d34.css",
+    "main.js": "/admin-shd/static/js/main.c48dc9d4.js",
     "static/media/vacancy.png": "/admin-shd/static/media/vacancy.6e49cb0c3be3dfea0723.png",
     "static/media/contacts.png": "/admin-shd/static/media/contacts.ef28ad031e2132ade878.png",
     "static/media/delivery.png": "/admin-shd/static/media/delivery.ffc663602509abacf635.png",
     "index.html": "/admin-shd/index.html",
-    "main.7d5b22f8.css.map": "/admin-shd/static/css/main.7d5b22f8.css.map",
-    "main.c562b081.js.map": "/admin-shd/static/js/main.c562b081.js.map"
+    "main.5f238d34.css.map": "/admin-shd/static/css/main.5f238d34.css.map",
+    "main.c48dc9d4.js.map": "/admin-shd/static/js/main.c48dc9d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d5b22f8.css",
-    "static/js/main.c562b081.js"
+    "static/css/main.5f238d34.css",
+    "static/js/main.c48dc9d4.js"
   ]
 }
