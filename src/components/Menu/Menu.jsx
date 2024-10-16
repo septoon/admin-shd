@@ -62,7 +62,7 @@ const Menu = () => {
       ))}
       <BackButton onClick={() => navigate('/admin-shd')} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
-      <button  onClick={saveData} >Save</button>
+      {/* <button  onClick={saveData} >Save</button> */}
     </div>
   );
 };

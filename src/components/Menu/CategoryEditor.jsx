@@ -38,9 +38,9 @@ function CategoryEditor({ category, items, onUpdate }) {
         activeIndex={activeIndexes}
         className="w-full"
         onTabChange={onTabChange}>
-        <AccordionTab contentClassName=''
+        <AccordionTab contentClassName='px-0 w-full m-0 [&_.p-accordion-content]:p-0'
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
-          headerClassName='font-bold bg-light dark:text-white dark:bg-dark rounded-md'
+          headerClassName='font-bold bg-light [&_*]:pl-2  dark:text-white dark:bg-dark rounded-md'
           key={category}
           header={category}>
           {editingItems.map((item, index) => (
@@ -53,9 +53,9 @@ function CategoryEditor({ category, items, onUpdate }) {
           ))}
           <button
             onClick={addItem}
-            className="mt-2 px-4 py-2 text-white bg-orange-600 rounded-md"
+            className="mt-2 px-4 py-2 text-white font-semibold bg-orange-600 rounded-md"
           >
-            Добавить блюдо
+            Добавить блюдо +
           </button>
         </AccordionTab>
       </Accordion>

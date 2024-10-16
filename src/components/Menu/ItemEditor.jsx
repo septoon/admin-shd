@@ -55,7 +55,7 @@ function ItemEditor({ item, onChange, onDelete }) {
   const inputClassName = 'p-2 border border-gray-300 focus:outline-none dark:border-gray dark:bg-dark dark:text-white rounded';
 
   return (
-    <div className='w-full flex flex-col items-center justify-between rounded-10 mt-5 dark:bg-black rounded-md shadow-xl'>
+    <div className='w-full flex flex-col items-center justify-between rounded-10 px-0 mt-5 dark:bg-black rounded-md shadow-xl'>
       <div className="card flex justify-content-center">
         <Toast ref={toastBC} position="top-center" onRemove={clear} />
       </div>
