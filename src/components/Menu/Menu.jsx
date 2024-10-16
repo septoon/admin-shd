@@ -13,7 +13,7 @@ const Menu = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.shashlichny-dom.ru/api/data')
+      .get('https://api.shashlichny-dom.ru/data.json')
       .then((response) => {
         setData(response.data);
       })
@@ -36,7 +36,7 @@ const Menu = () => {
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
-      .put('https://api.shashlichny-dom.ru/api/save', data)
+    .put('https://api.shashlichny-dom.ru/api/save/data.json', data)  // Измените URL на /api/data
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -62,7 +62,7 @@ const Menu = () => {
       ))}
       <BackButton onClick={() => navigate('/admin-shd')} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
-      {/* <button  onClick={saveData} >Save</button> */}
+      <button  onClick={saveData} >Save</button>
     </div>
   );
 };

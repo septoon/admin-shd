@@ -41,7 +41,7 @@ function ItemEditor({ item, onChange, onDelete }) {
             content: (props) => (
               <div className="flex flex-col align-items-left">
                 <div className="flex align-items-center gap-2">
-                  <span className="font-bold text-900">Удалить блюдо</span>
+                  <span className="font-bold text-900">Удалить блюдо {item.name}</span>
                 </div>
                 <div className="font-medium text-lg my-3 text-900">{props.message.summary}</div>
                 <Button className="p-button-sm flex self-start" label="Подтвердить" severity="success" onClick={submit}></Button>
@@ -133,7 +133,7 @@ function ItemEditor({ item, onChange, onDelete }) {
           onClick={() => confirm('top')}
           className='rounded-md py-2 mt-1 w-full text-white bg-DimGray'
         >
-          Удалить "{item.name}"
+          Удалить {item.name.length > 0 ? `"${item.name}"` : ''}
         </button>
     </div>
   );
