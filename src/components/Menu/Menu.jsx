@@ -34,7 +34,7 @@ const Menu = () => {
   };
 
   const saveData = () => {
-    WebApp.HapticFeedback.impactOccurred('heavy')
+    WebApp.HapticFeedback.impactOccurred('heavy');
     axios
       .put('https://api.shashlichny-dom.ru/api/save', data)
       .then(() => toast.success('Данные успешно обновлены!'))
@@ -46,11 +46,12 @@ const Menu = () => {
 
   if (loading) return (
     <div className='w-full h-full flex justify-center items-center'>
-      <span className='text-dark dark:text-white'>Звгрузка...</span>
-    </div>  )
+      <span className='text-dark dark:text-white'>Загрузка...</span>
+    </div>
+  );
 
   return (
-    <div className='w-full pb-20'> 
+    <div className='w-full pb-20'>
       {data && Object.keys(data).map(category => (
         <CategoryEditor
           key={category}
@@ -61,6 +62,7 @@ const Menu = () => {
       ))}
       <BackButton onClick={() => navigate('/admin-shd')} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
+      <button  onClick={saveData} >Save</button>
     </div>
   );
 };
