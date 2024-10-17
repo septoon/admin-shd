@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import WebApp from '@twa-dev/sdk';
+import Loader from '../../common/Loader';
 
 const Contacts = () => {
   const navigate = useNavigate();
@@ -46,11 +47,7 @@ const Contacts = () => {
   };
 
   if (loading) {
-    return (
-      <div className='w-full h-full flex justify-center items-center'>
-        <span className='text-dark dark:text-white'>Загрузка...</span>
-      </div>
-    );
+    return <Loader />
   }
 
   const inputClassName = 'p-2 w-full border border-gray-300 focus:outline-none dark:border-gray dark:bg-dark dark:text-white rounded';

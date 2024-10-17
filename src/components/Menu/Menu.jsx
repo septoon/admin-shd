@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import CategoryEditor from './CategoryEditor';
 import { toast } from 'react-toastify';
 import { BackButton, MainButton } from '@twa-dev/sdk/react';
+import Loader from '../../common/Loader';
 
 const Menu = () => {
   const [data, setData] = useState(null);
@@ -44,11 +45,7 @@ const Menu = () => {
       });
   };
 
-  if (loading) return (
-    <div className='w-full h-full flex justify-center items-center'>
-      <span className='text-dark dark:text-white'>Загрузка...</span>
-    </div>
-  );
+  if (loading) return <Loader />
 
   return (
     <div className='w-full pb-10'>
