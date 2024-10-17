@@ -61,6 +61,7 @@ module.exports = {
       'light': 'F7F9FA',
       'transparent': 'transparent',
       'white': '#ffffff',
+      'black': '#000000',
       'purple': '#3f3cbb',
       'blue': '#316ff4',
       'midnight': '#121063',

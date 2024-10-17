@@ -38,11 +38,16 @@ function CategoryEditor({ category, items, onUpdate }) {
         activeIndex={activeIndexes}
         className="w-full"
         onTabChange={onTabChange}>
-        <AccordionTab contentClassName='px-0 w-full m-0 [&_.p-accordion-content]:p-0'
+        <AccordionTab 
+          contentClassName='px-0 w-full m-0 [&_.p-accordion-content]:p-0'
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
-          headerClassName='font-bold bg-light [&_*]:pl-2  dark:text-white dark:bg-dark rounded-md'
+          headerClassName='font-bold dark:text-white rounded-md'
           key={category}
-          header={category}>
+          header={
+            <span className="dark:absolute top-0 left-0 right-0 bottom-0 rounded-md flex items-center pl-3 dark:bg-dark gap-2">
+                <span className="font-bold white-space-nowrap">{category}</span>
+            </span>
+        }>
           {editingItems.map((item, index) => (
             <ItemEditor
               key={item.id || index}

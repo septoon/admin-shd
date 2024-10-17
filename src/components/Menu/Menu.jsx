@@ -51,7 +51,7 @@ const Menu = () => {
   );
 
   return (
-    <div className='w-full pb-20'>
+    <div className='w-full pb-10'>
       {data && Object.keys(data).map(category => (
         <CategoryEditor
           key={category}
@@ -62,7 +62,7 @@ const Menu = () => {
       ))}
       <BackButton onClick={() => navigate('/admin-shd')} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
-      <button  onClick={saveData} >Save</button>
+      {/* <button  onClick={saveData} >Save</button> */}
     </div>
   );
 };

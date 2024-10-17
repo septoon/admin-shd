@@ -39,12 +39,12 @@ function ItemEditor({ item, onChange, onDelete }) {
             summary: 'Вы действительно хотите удалить блюдо? Это действие безвозвратно!',
             sticky: true,
             content: (props) => (
-              <div className="flex flex-col align-items-left">
+              <div className="flex flex-col align-items-left text-dark">
                 <div className="flex align-items-center gap-2">
                   <span className="font-bold text-900">Удалить блюдо {item.name}</span>
                 </div>
                 <div className="font-medium text-lg my-3 text-900">{props.message.summary}</div>
-                <Button className="p-button-sm flex self-start" label="Подтвердить" severity="success" onClick={submit}></Button>
+                <Button className="bg-orange-600 text-white p-2 flex self-start" label="Подтвердить" severity="success" onClick={submit}></Button>
               </div>
             )
         });
@@ -55,11 +55,11 @@ function ItemEditor({ item, onChange, onDelete }) {
   const inputClassName = 'p-2 border border-gray-300 focus:outline-none dark:border-gray dark:bg-dark dark:text-white rounded';
 
   return (
-    <div className='w-full flex flex-col items-center justify-between rounded-10 px-0 mt-5 dark:bg-black rounded-md shadow-xl'>
+    <div className='w-full flex flex-col items-center justify-between dark:bg-black rounded-10 px-0 mt-5 rounded-md shadow-xl' >
       <div className="card flex justify-content-center">
         <Toast ref={toastBC} position="top-center" onRemove={clear} />
       </div>
-      <div className="flex w-full justify-between dark:bg-black flex-row mb-2">
+      <div className="flex w-full justify-between flex-row mb-2">
         <img
           src={item.image}
           width={40}
@@ -69,7 +69,7 @@ function ItemEditor({ item, onChange, onDelete }) {
           className="rounded-md min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
           alt="pic"
         />
-        <div className="flex flex-col w-1/2 h-full dark:bg-black justify-around px-1">
+        <div className="flex flex-col w-1/2 h-full justify-around px-1">
           <input
             type="text"
             name="name"
