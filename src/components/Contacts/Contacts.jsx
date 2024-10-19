@@ -38,7 +38,7 @@ const Contacts = () => {
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
-      .put('https://api.shashlichny-dom.ru/api/save/contacts.json', data)  // Обновляем по правильному URL
+      .put('https://api.shashlichny-dom.ru/api/save/contacts.json', data)
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -54,7 +54,6 @@ const Contacts = () => {
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center pt-4'>
-      
       <div className='w-full flex flex-col pl-3'>
         <div className='flex items-center mb-3 w-full'>
           <div className='flex flex-col'>

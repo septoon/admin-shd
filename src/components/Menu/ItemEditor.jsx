@@ -114,14 +114,21 @@ function ItemEditor({ item, onChange, onDelete }) {
         </div>
       </div>
       <div className='w-full flex justify-between dark:bg-black'>
-        <input
+        {/* <input
           type="text"
           name="image"
           value={item.image || ''}
           onChange={handleChange}
           placeholder="Ссылка на изображение"
           className={`${inputClassName} w-40`}
-        />
+        /> */}
+        
+        <button
+          onClick={toggleStopList}
+          className={`rounded-md w-40 py-3 text-white bg-purple`}
+        >
+          Новое фото
+        </button>
         <button
           onClick={toggleStopList}
           className={`rounded-md px-2 text-white ${item.onStop ? 'bg-red' : 'bg-orange'}`}

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import WebApp from '@twa-dev/sdk';
 import Loader from '../../common/Loader';
+import Switch from '../Switch/Switch';
 
 const Delivery = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const Delivery = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    type === 'checkbox' && WebApp.HapticFeedback.impactOccurred('medium');
     setData((prevData) => ({
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
@@ -44,7 +46,7 @@ const Delivery = () => {
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
-      .put('https://api.shashlichny-dom.ru/api/save/delivery.json', data)  // Обновляем по правильному URL
+      .put('https://api.shashlichny-dom.ru/api/save/delivery.json', data)
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -52,25 +54,25 @@ const Delivery = () => {
       });
   };
 
+  const visiblePaid = data.paidDelivery ? 'flex items-center mb-3 w-full opacity-1' : 'flex items-center mb-3 w-full opacity-35'
+
   if (loading) {
     return <Loader />
   }
 
-  const inputClassName = 'p-2 w-20 border border-gray-300 focus:outline-none dark:border-gray dark:bg-dark dark:text-white rounded';
+  const inputClassName = 'p-2 w-20 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center pt-4'>
       
-      <div className='w-full flex flex-col pl-3'>
+      <div className='w-full flex flex-col px-3'>
         <div className='flex items-center mb-3 w-full'>
           <div className='flex justify-between items-center w-full'>
             <span className='font-bold dark:text-white'>Платная доставка:</span>
-            <input
-              type="checkbox"
-              name="paidDelivery"
-              checked={data.paidDelivery}
-              onChange={handleChange}
-              className='mr-2'
+            <Switch
+              value={data.paidDelivery}
+              onColor="#4DD863"
+              handleToggle={handleChange}
             />
           </div>
         </div>
@@ -128,13 +130,14 @@ const Delivery = () => {
           </div>
         </div>
 
-        <div className='flex items-center mb-3 w-full'>
+        <div className={visiblePaid}>
           <div className='flex flex-col'>
             <span className='font-bold dark:text-white'>Стоимость доставки:</span>
             <div>
               <input
                 type="number"
                 name="deliveryCost"
+                disabled={!data.paidDelivery}
                 className={inputClassName}
                 placeholder='Стоимость доставки'
                 onChange={handleChange}
@@ -148,6 +151,7 @@ const Delivery = () => {
 
       <BackButton onClick={() => navigate('/admin-shd')} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
+      {/* <button onClick={saveData}>save</button> */}
     </div>
   );
 };
