@@ -54,19 +54,20 @@ const Delivery = () => {
       });
   };
 
-  const visiblePaid = data.paidDelivery ? 'flex items-center mb-3 w-full opacity-1' : 'flex items-center mb-3 w-full opacity-35'
+  const visiblePaid = data.paidDelivery ? 'flex items-center my-3 w-full opacity-1' : 'flex items-center my-3 w-full opacity-35'
 
   if (loading) {
     return <Loader />
   }
 
-  const inputClassName = 'p-2 w-20 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
+  const inputWrapper = 'flex items-center py-3 w-full border-b border-gray-300 dark:border-dark-switch'
+  const inputClassName = 'pl-2 py-0 w-14 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center pt-4'>
       
       <div className='w-full flex flex-col px-3'>
-        <div className='flex items-center mb-3 w-full'>
+        <div className={inputWrapper}>
           <div className='flex justify-between items-center w-full'>
             <span className='font-bold dark:text-white'>Платная доставка:</span>
             <Switch
@@ -77,7 +78,7 @@ const Delivery = () => {
           </div>
         </div>
 
-        <div className='flex items-center mb-3 w-full'>
+        <div className={inputWrapper}>
           <div className='flex flex-col'>
             <span className='font-bold dark:text-white'>Начало доставки:</span>
             <div>
@@ -95,7 +96,7 @@ const Delivery = () => {
           </div>
         </div>
 
-        <div className='flex items-center mb-3 w-full'>
+        <div className={inputWrapper}>
           <div className='flex flex-col'>
             <span className='font-bold dark:text-white'>Конец доставки:</span>
             <div>
@@ -113,7 +114,7 @@ const Delivery = () => {
           </div>
         </div>
 
-        <div className='flex items-center mb-3 w-full'>
+        <div className={inputWrapper}>
           <div className='flex flex-col'>
             <span className='font-bold dark:text-white'>Минимальная сумма заказа:</span>
             <div>

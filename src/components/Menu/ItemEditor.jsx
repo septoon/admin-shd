@@ -3,10 +3,12 @@ import React, { useRef, useState } from 'react';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
+import ImageDialog from '../../common/ImageDialog';
 
 
 function ItemEditor({ item, onChange, onDelete }) {
   const [visible, setVisible] = useState(false);
+  const [dialogVisible, setDialogVisible] = useState(false);
   const toastBC = useRef(null);
 
   const clear = () => {
@@ -124,10 +126,10 @@ function ItemEditor({ item, onChange, onDelete }) {
         /> */}
         
         <button
-          onClick={toggleStopList}
-          className={`rounded-md w-40 py-3 text-white bg-purple`}
+          onClick={() => setDialogVisible(true)}
+          className='rounded-md w-40 py-3 text-white bg-orange-600'
         >
-          Новое фото
+          Новое фото +
         </button>
         <button
           onClick={toggleStopList}
@@ -142,6 +144,7 @@ function ItemEditor({ item, onChange, onDelete }) {
         >
           Удалить {item.name.length > 0 ? `"${item.name}"` : ''}
         </button>
+        <ImageDialog dialogVisible={dialogVisible} setDialogVisible={setDialogVisible} />
     </div>
   );
 }

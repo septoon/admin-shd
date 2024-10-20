@@ -1,7 +1,12 @@
+
 import React, { useState } from "react";
 import axios from "axios";
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
+import AddFile from '../assets/img/gallery.png'
 
-const ImageUpload = () => {
+const ImageDialog = ({dialogVisible, setDialogVisible}) => {
+
   const [file, setFile] = useState(null); // Состояние для выбранного файла
   const [imageUrl, setImageUrl] = useState(""); // Состояние для ссылки на изображение
   const [isLoading, setIsLoading] = useState(false); // Состояние для индикации загрузки
@@ -42,15 +47,36 @@ const ImageUpload = () => {
       });
   };
 
-  return (
-    <div className="App">
-      <h2>Загрузить изображение:</h2>
-      <input type="file" onChange={handleChange} />
-      <button onClick={uploadImage} disabled={isLoading}>
-        {isLoading ? "Загрузка..." : "Загрузить"}
-      </button>
-    </div>
-  );
-}
+    const footerContent = (
+        <div>
+          <button onClick={uploadImage} className="rounded-md w-40 py-3 text-white bg-orange-600" disabled={isLoading}>
+            {isLoading ? "Загрузка..." : "Загрузить"}
+          </button>
+        </div>
+    );
 
-export default ImageUpload;
+    return (
+      <Dialog header="Загрузить изображение:" visible={dialogVisible} position={'bottom'} className="w-full flex flex-col" onHide={() => {if (!dialogVisible) return; setDialogVisible(false); }} footer={footerContent} draggable={false} resizable={false}>
+        <label htmlFor='file' className="cursor-pointer">
+        <img className="w-10 h-10" src={AddFile} alt="Выбрать файл" />
+        {
+          file ? (
+            <div>
+              <img src={URL.createObjectURL(file)} alt="new" />
+            </div>
+          ) : null
+        }
+      </label>
+      <input
+        id="file"
+        type="file"
+        onChange={handleChange}
+        multiple
+        className="hidden"
+      />
+        {imageUrl && <span>Ссылка на изображение: {imageUrl}</span>}
+      </Dialog>
+    )
+}
+        
+export default ImageDialog;
