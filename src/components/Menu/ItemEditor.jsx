@@ -61,7 +61,7 @@ function ItemEditor({ item, onChange, onDelete }) {
   };
 
 
-  const inputClassName = 'p-2 border border-gray-300 focus:outline-none dark:border-gray dark:bg-dark dark:text-white rounded';
+  const inputClassName = 'p-2 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
     <div className='w-full flex flex-col items-center justify-between dark:bg-black rounded-10 px-0 mt-5 rounded-md shadow-xl' >

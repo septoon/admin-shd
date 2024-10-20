@@ -50,7 +50,7 @@ const Contacts = () => {
     return <Loader />
   }
 
-  const inputClassName = 'p-2 w-full border border-gray-300 focus:outline-none dark:border-gray dark:bg-dark dark:text-white rounded';
+  const inputClassName = 'p-2 w-full border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center pt-4'>
