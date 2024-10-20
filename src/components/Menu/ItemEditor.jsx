@@ -5,6 +5,8 @@ import { Button } from 'primereact/button';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import ImageDialog from '../../common/ImageDialog';
 
+import AddFile from '../../assets/img/gallery.png'
+
 
 function ItemEditor({ item, onChange, onDelete }) {
   const [visible, setVisible] = useState(false);
@@ -31,6 +33,11 @@ function ItemEditor({ item, onChange, onDelete }) {
     WebApp.HapticFeedback.impactOccurred('soft');
     onChange({ ...item, onStop: !item.onStop });
   };
+
+  const handleUpload = (uploadedUrl) => {
+    onChange({ ...item, image: uploadedUrl });
+    setDialogVisible(false);
+  }
 
   const confirm = () => {
     if (!visible) {
@@ -62,15 +69,24 @@ function ItemEditor({ item, onChange, onDelete }) {
         <Toast ref={toastBC} position="top-center" onRemove={clear} />
       </div>
       <div className="flex w-full justify-between flex-row mb-2">
-        <img
-          src={item.image}
-          width={40}
-          height={28}
-          quality={100}
-          sizes="50%"
-          className="rounded-md min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
-          alt="pic"
-        />
+        <button
+          onClick={() => setDialogVisible(true)}
+          className='relative'
+        >
+          <img
+            src={item.image}
+            width={40}
+            height={28}
+            quality={100}
+            sizes="50%"
+            className="rounded-m min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
+            alt="pic"
+          />
+          <div className='w-16 h-16 rounded-tl-3xl bg-white flex justify-center items-center dark:bg-black absolute right-[-12px] bottom-[-12px]'>
+            <img className="w-10 h-10" src={AddFile} alt="Выбрать файл" />
+
+          </div>
+        </button>
         <div className="flex flex-col w-1/2 h-full justify-around px-1">
           <input
             type="text"
@@ -116,21 +132,14 @@ function ItemEditor({ item, onChange, onDelete }) {
         </div>
       </div>
       <div className='w-full flex justify-between dark:bg-black'>
-        {/* <input
+        <input
           type="text"
           name="image"
           value={item.image || ''}
           onChange={handleChange}
           placeholder="Ссылка на изображение"
           className={`${inputClassName} w-40`}
-        /> */}
-        
-        <button
-          onClick={() => setDialogVisible(true)}
-          className='rounded-md w-40 py-3 text-white bg-orange-600'
-        >
-          Новое фото +
-        </button>
+        />
         <button
           onClick={toggleStopList}
           className={`rounded-md px-2 text-white ${item.onStop ? 'bg-red' : 'bg-orange'}`}
@@ -144,7 +153,7 @@ function ItemEditor({ item, onChange, onDelete }) {
         >
           Удалить {item.name.length > 0 ? `"${item.name}"` : ''}
         </button>
-        <ImageDialog dialogVisible={dialogVisible} setDialogVisible={setDialogVisible} />
+        <ImageDialog dialogVisible={dialogVisible} setDialogVisible={setDialogVisible} onUpload={handleUpload} />
     </div>
   );
 }
