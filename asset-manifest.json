@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/admin-shd/static/css/main.4acdf89f.css",
-    "main.js": "/admin-shd/static/js/main.1329a20b.js",
+    "main.css": "/admin-shd/static/css/main.11a24334.css",
+    "main.js": "/admin-shd/static/js/main.42c4a8b1.js",
     "static/media/InterVariable-Italic.woff2": "/admin-shd/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
     "static/media/InterVariable.woff2": "/admin-shd/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
     "static/media/vacancy.png": "/admin-shd/static/media/vacancy.6e49cb0c3be3dfea0723.png",
     "static/media/contacts.png": "/admin-shd/static/media/contacts.ef28ad031e2132ade878.png",
     "static/media/delivery.png": "/admin-shd/static/media/delivery.ffc663602509abacf635.png",
     "index.html": "/admin-shd/index.html",
-    "main.4acdf89f.css.map": "/admin-shd/static/css/main.4acdf89f.css.map",
-    "main.1329a20b.js.map": "/admin-shd/static/js/main.1329a20b.js.map"
+    "main.11a24334.css.map": "/admin-shd/static/css/main.11a24334.css.map",
+    "main.42c4a8b1.js.map": "/admin-shd/static/js/main.42c4a8b1.js.map"
   },
   "entrypoints": [
-    "static/css/main.4acdf89f.css",
-    "static/js/main.1329a20b.js"
+    "static/css/main.11a24334.css",
+    "static/js/main.42c4a8b1.js"
   ]
 }
