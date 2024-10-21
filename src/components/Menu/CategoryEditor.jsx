@@ -41,7 +41,7 @@ function CategoryEditor({ category, items, onUpdate }) {
         <AccordionTab 
           contentClassName='px-0 w-full m-0 [&_.p-accordion-content]:p-0 [&_.p-accordion-content]:dark:bg-black'
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
-          headerClassName='font-bold dark:text-white [&_.p-accordion-header-link]:dark:!bg-dark'
+          headerClassName='font-bold dark:text-white [&_.p-accordion-header-link]:!bg-silver [&_.p-accordion-header-link]:dark:!bg-dark'
           key={category}
           header={
             <span className=" top-0 left-0 right-0 bottom-0 rounded-md flex items-center pl-6 gap-2">

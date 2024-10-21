@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import CategoryEditor from './CategoryEditor';
 import { toast } from 'react-toastify';
 import { BackButton, MainButton } from '@twa-dev/sdk/react';
-import Loader from '../../common/Loader';
+import Loader from '../../common/Loader/Loader';
 
 const Menu = () => {
   const [data, setData] = useState(null);

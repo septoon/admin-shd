@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import WebApp from '@twa-dev/sdk';
-import Loader from '../../common/Loader';
+import Loader from '../../common/Loader/Loader';
 import Switch from '../Switch/Switch';
 
 const Delivery = () => {
