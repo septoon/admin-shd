@@ -25,7 +25,7 @@ function ItemEditor({ item, onChange, onDelete }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    onChange({ ...item, [name]: value });
+    onChange({ ...item, [name]: value});
   };
 
   const toggleStopList = () => {
@@ -71,7 +71,7 @@ function ItemEditor({ item, onChange, onDelete }) {
       <div className="card flex justify-content-center">
         <Toast ref={toastBC} position="top-center" onRemove={clear} />
       </div>
-      <div className="flex w-full justify-between flex-row mb-2">
+      <div className="flex w-full justify-between items-start flex-row mb-2">
         <button onClick={() => setDialogVisible(true)} className="relative">
           <img
             src={item.image}
@@ -114,6 +114,23 @@ function ItemEditor({ item, onChange, onDelete }) {
               className={inputClassName}
             />
           )}
+          {
+            item.weight ? (
+              <>
+                <span className='text-xs font-bold dark:text-white my-1'>Укажите средний вес готового блюда:</span>
+                <input
+                  type="number"
+                  name="weight"
+                  value={item.weight || 0}
+                  onChange={handleChange}
+                  placeholder="Средний вес"
+                  className={inputClassName}
+                  onFocus={(event) => event.target.select()}
+                  inputMode="numeric"
+                />
+              </>
+            ) : null
+          }
           <div className="w-full flex flex-row justify-between items-center pr-2">
             <span className="text-gray-500">Цена:</span>
             <div>
@@ -124,6 +141,7 @@ function ItemEditor({ item, onChange, onDelete }) {
                 onChange={handleChange}
                 placeholder="Цена"
                 className={`${inputClassName} w-16`}
+                inputMode="numeric"
               />
               <span className="text-gray-500"> ₽</span>
             </div>

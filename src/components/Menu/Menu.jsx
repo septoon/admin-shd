@@ -37,7 +37,7 @@ const Menu = () => {
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
-    .put('https://api.shashlichny-dom.ru/api/save/data.json', data)  // Измените URL на /api/data
+    .put('https://api.shashlichny-dom.ru/api/save/data.json', data)
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);

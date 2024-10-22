@@ -90,6 +90,7 @@ const Delivery = () => {
                 placeholder='Начало доставки'
                 onChange={handleChange}
                 value={data.deliveryStart || ''}
+                inputMode="numeric"
               />
               <span className="text-gray-500"> часов</span>
             </div>
@@ -108,6 +109,7 @@ const Delivery = () => {
                 placeholder='Конец доставки'
                 onChange={handleChange}
                 value={data.deliveryEnd || ''}
+                inputMode="numeric"
               />
               <span className="text-gray-500"> часов</span>
             </div>
@@ -125,6 +127,7 @@ const Delivery = () => {
                 placeholder='Минимальная сумма'
                 onChange={handleChange}
                 value={data.minDeliveryAmount || ''}
+                inputMode="numeric"
               />
               <span className="text-gray-500"> ₽</span>
             </div>
@@ -143,6 +146,7 @@ const Delivery = () => {
                 placeholder='Стоимость доставки'
                 onChange={handleChange}
                 value={data.deliveryCost || ''}
+                inputMode="numeric"
               />
               <span className="text-gray-500"> ₽</span>
             </div>

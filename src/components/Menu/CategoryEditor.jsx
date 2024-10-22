@@ -38,6 +38,7 @@ function CategoryEditor({ category, items, onUpdate }) {
         activeIndex={activeIndexes}
         className="w-full"
         onTabChange={onTabChange}>
+        
         <AccordionTab 
           contentClassName='px-0 w-full m-0 [&_.p-accordion-content]:p-0 [&_.p-accordion-content]:dark:bg-black'
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
