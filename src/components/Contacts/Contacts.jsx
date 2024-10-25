@@ -9,7 +9,7 @@ import Loader from '../../common/Loader/Loader';
 
 const Contacts = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState({ phoneNumber: '', address: '', schedule: '' });
+  const [data, setData] = useState({ phoneNumber: '', address: '', scheduleStart: 0, scheduleEnd: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -86,14 +86,24 @@ const Contacts = () => {
 
         <div className="flex items-center mb-3 w-full">
           <div className="flex flex-col">
-            <span className="font-bold dark:text-white">Режим работы:</span>
+            <span className="font-bold dark:text-white mb-2">Режим работы:</span>
+            <span className="text-sm font-bold dark:text-white my-1">Открытие:</span>
             <input
               type="text"
               name="schedule"
               className={inputClassName}
-              placeholder="Режим работы"
+              placeholder="Открытие"
               onChange={handleChange}
-              value={data.schedule || ''}
+              value={data.scheduleStart || ''}
+            />
+            <span className="text-sm font-bold dark:text-white my-1">Закрытие:</span>
+            <input
+              type="text"
+              name="schedule"
+              className={inputClassName}
+              placeholder="Закрытие"
+              onChange={handleChange}
+              value={data.scheduleEnd || ''}
             />
           </div>
         </div>
