@@ -14,7 +14,7 @@ const Menu = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.shashlichny-dom.ru/data.json')
+      .get(`https://api.shashlichny-dom.ru/data.json?t=${Date.now()}`)
       .then((response) => {
         setData(response.data);
       })

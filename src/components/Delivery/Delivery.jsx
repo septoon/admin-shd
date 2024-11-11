@@ -21,7 +21,7 @@ const Delivery = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.shashlichny-dom.ru/delivery.json')
+      .get(`https://api.shashlichny-dom.ru/delivery.json?t=${Date.now()}`)
       .then((response) => {
         setData(response.data);
       })

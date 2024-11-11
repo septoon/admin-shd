@@ -14,7 +14,7 @@ const Contacts = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.shashlichny-dom.ru/contacts.json')
+      .get(`https://api.shashlichny-dom.ru/contacts.json?t=${Date.now()}`)
       .then((response) => {
         setData(response.data);
       })

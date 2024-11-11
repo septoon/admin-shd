@@ -72,20 +72,30 @@ function ItemEditor({ item, onChange, onDelete }) {
         <Toast ref={toastBC} position="top-center" onRemove={clear} />
       </div>
       <div className="flex w-full justify-between items-start flex-row mb-2">
-        <button onClick={() => setDialogVisible(true)} className="relative">
-          <img
-            src={item.image}
-            width={40}
-            height={28}
-            quality={100}
-            sizes="50%"
-            className="rounded-m min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
-            alt="pic"
+        <div className='flex flex-col'>
+          <button onClick={() => setDialogVisible(true)} className="relative">
+            <img
+              src={item.image}
+              width={40}
+              height={28}
+              quality={100}
+              sizes="50%"
+              className="rounded-m min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
+              alt="pic"
+            />
+            <div className="w-16 h-16 rounded-tl-3xl bg-white flex justify-center items-center dark:bg-black absolute right-[-6px] bottom-[-6px]">
+              <img className="w-10 h-10" src={AddFile} alt="Выбрать файл" />
+            </div>
+          </button>
+          <input
+            type="text"
+            name="image"
+            value={item.image || ''}
+            onChange={handleChange}
+            placeholder="Ссылка на изображение"
+            className={`${inputClassName} w-40`}
           />
-          <div className="w-16 h-16 rounded-tl-3xl bg-white flex justify-center items-center dark:bg-black absolute right-[-6px] bottom-[-6px]">
-            <img className="w-10 h-10" src={AddFile} alt="Выбрать файл" />
-          </div>
-        </button>
+        </div>
         <div className="flex flex-col w-1/2 h-full justify-around px-1">
           <input
             type="text"
@@ -151,10 +161,10 @@ function ItemEditor({ item, onChange, onDelete }) {
       <div className="w-full flex justify-between dark:bg-black">
         <input
           type="text"
-          name="image"
-          value={item.image || ''}
+          name="description"
+          value={item.description}
           onChange={handleChange}
-          placeholder="Ссылка на изображение"
+          placeholder="Описание блюда"
           className={`${inputClassName} w-40`}
         />
         <button

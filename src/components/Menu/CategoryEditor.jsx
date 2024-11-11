@@ -16,7 +16,7 @@ function CategoryEditor({ category, items, onUpdate }) {
   };
 
   const addItem = () => {
-    const newItem = { id: Date.now(), name: '', price: '', image: '', onStop: false };
+    const newItem = { id: Date.now(), name: '', price: '', image: '', description: '', onStop: false };
     const newItems = [...editingItems, newItem];
     setEditingItems(newItems);
     onUpdate(newItems);
