@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import menuIcon from '../../assets/img/menu.png';
 import contactsIcon from '../../assets/img/contacts.png';
 import deliveryIcon from '../../assets/img/delivery.png';
-import vacancyIcon from '../../assets/img/vacancy.png';
+import availableIcon from '../../assets/img/isAvailable.png';
 import { chatIds } from '../../common/access';
 import './Main.css';
 
@@ -30,13 +30,11 @@ const Main = () => {
   }, []);
 
   const handleNavigation = (path) => {
-    // Trigger exit animation
     setAnimationClass('page-exit-active');
 
-    // Wait for the animation to complete before navigating
     setTimeout(() => {
       navigate(path);
-    }, 200); // Match the duration of your CSS transition
+    }, 200);
   };
 
   return (
@@ -65,11 +63,11 @@ const Main = () => {
             <span className="dark:text-white">Доставка</span>
           </div>
           <div
-            onClick={() => handleNavigation('/vacancies')}
+            onClick={() => handleNavigation('/available')}
             className="w-[80%] h-20 flex justify-start pl-5 items-center mb-5 bg-silver dark:bg-darkGray rounded-lg cursor-pointer"
           >
-            <img src={vacancyIcon} className="h-5 mr-3" alt="vacancies" />
-            <span className="dark:text-white">Вакансии</span>
+            <img src={availableIcon} className="h-5 mr-3" alt="available" />
+            <span className="dark:text-white">Доступность сайта</span>
           </div>
         </>
       ) : (

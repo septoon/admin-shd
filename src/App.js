@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import Menu from './components/Menu/Menu';
 import Contacts from './components/Contacts/Contacts';
 import Delivery from './components/Delivery/Delivery';
-import Vacancies from './components/Vacancies/Vacancies';
+import Available from './components/Available/Available';
 import Main from './components/Main/Main';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/delivery" element={<Delivery />} />
-        <Route path="/vacancies" element={<Vacancies />} />
+        <Route path="/available" element={<Available />} />
       </Routes>
     </div>
   );

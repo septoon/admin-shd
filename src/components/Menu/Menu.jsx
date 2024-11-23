@@ -6,13 +6,16 @@ import CategoryEditor from './CategoryEditor';
 import { toast } from 'react-toastify';
 import { BackButton, MainButton } from '@twa-dev/sdk/react';
 import Loader from '../../common/Loader/Loader';
+import '../../index.css'
 
 const Menu = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [animationClass, setAnimationClass] = useState('page-el-enter');
   const navigate = useNavigate();
 
   useEffect(() => {
+    setAnimationClass('page-el-enter-active');
     axios
       .get(`https://api.shashlichny-dom.ru/data.json?t=${Date.now()}`)
       .then((response) => {
@@ -34,6 +37,14 @@ const Menu = () => {
     }));
   };
 
+  const handleNavigation = () => {
+    setAnimationClass('page-el-exit-active');
+
+    setTimeout(() => {
+      navigate('/admin-shd');
+    }, 200);
+  };
+
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
@@ -48,7 +59,7 @@ const Menu = () => {
   if (loading) return <Loader />
 
   return (
-    <div className='w-full pb-10'>
+    <div className={`w-full pb-10 page-el ${animationClass}`}>
       {data && Object.keys(data).map(category => (
         <CategoryEditor
           key={category}
@@ -57,9 +68,8 @@ const Menu = () => {
           onUpdate={(updatedItems) => handleCategoryUpdate(category, updatedItems)}
         />
       ))}
-      <BackButton onClick={() => navigate('/admin-shd')} />
+      <BackButton onClick={handleNavigation} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
-      {/* <button  onClick={saveData} >Save</button> */}
     </div>
   );
 };

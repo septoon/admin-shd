@@ -15,3 +15,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page-el {
+  transition: transform 0.2s ease;
+}
+
+.page-el-enter {
+  transform: translateX(100%);
+}
+
+.page-el-enter-active {
+  transform: translateX(0);
+}
+
+.page-el-exit {
+  transform: translateX(0);
+}
+
+.page-el-exit-active {
+  transform: translateX(100%);
+}

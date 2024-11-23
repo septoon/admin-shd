@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import WebApp from '@twa-dev/sdk';
 import Loader from '../../common/Loader/Loader';
 import Switch from '../Switch/Switch';
+import '../../index.css'
 
 const Delivery = () => {
   const navigate = useNavigate();
@@ -18,8 +19,10 @@ const Delivery = () => {
     deliveryCost: ''
   });
   const [loading, setLoading] = useState(true);
+  const [animationClass, setAnimationClass] = useState('page-el-enter');
 
   useEffect(() => {
+    setAnimationClass('page-el-enter-active');
     axios
       .get(`https://api.shashlichny-dom.ru/delivery.json?t=${Date.now()}`)
       .then((response) => {
@@ -43,6 +46,14 @@ const Delivery = () => {
     }));
   };
 
+  const handleNavigation = () => {
+    setAnimationClass('page-el-exit-active');
+
+    setTimeout(() => {
+      navigate('/admin-shd');
+    }, 200);
+  };
+
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
@@ -64,7 +75,7 @@ const Delivery = () => {
   const inputClassName = 'pl-2 py-0 w-14 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center pt-4'>
+    <div className={`w-full h-full flex flex-col justify-center items-center pt-4 page-el ${animationClass}`}>
       
       <div className='w-full flex flex-col px-3'>
         <div className={inputWrapper}>
@@ -154,9 +165,8 @@ const Delivery = () => {
         </div>
       </div>
 
-      <BackButton onClick={() => navigate('/admin-shd')} />
+      <BackButton onClick={handleNavigation} />
       <MainButton text='Сохранить изменения' onClick={saveData} />
-      {/* <button onClick={saveData}>save</button> */}
     </div>
   );
 };

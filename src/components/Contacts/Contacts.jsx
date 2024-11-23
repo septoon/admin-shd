@@ -6,13 +6,16 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import WebApp from '@twa-dev/sdk';
 import Loader from '../../common/Loader/Loader';
+import '../../index.css'
 
 const Contacts = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({ phoneNumber: '', address: '', scheduleStart: 0, scheduleEnd: 0 });
   const [loading, setLoading] = useState(true);
+  const [animationClass, setAnimationClass] = useState('page-el-enter');
 
   useEffect(() => {
+    setAnimationClass('page-el-enter-active');
     axios
       .get(`https://api.shashlichny-dom.ru/contacts.json?t=${Date.now()}`)
       .then((response) => {
@@ -35,6 +38,14 @@ const Contacts = () => {
     }));
   };
 
+  const handleNavigation = () => {
+    setAnimationClass('page-el-exit-active');
+
+    setTimeout(() => {
+      navigate('/admin-shd');
+    }, 200);
+  };
+
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
@@ -54,7 +65,7 @@ const Contacts = () => {
     'p-2 w-full border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center pt-4">
+    <div className={`w-full h-full flex flex-col justify-center items-center pt-4 page-el ${animationClass}`}>
       <div className="w-full flex flex-col pl-3">
         <div className="flex items-center mb-3 w-full">
           <div className="flex flex-col">
@@ -112,7 +123,7 @@ const Contacts = () => {
         </div>
       </div>
 
-      <BackButton onClick={() => navigate('/admin-shd')} />
+      <BackButton onClick={handleNavigation} />
       <MainButton text="Сохранить изменения" onClick={saveData} />
     </div>
   );
