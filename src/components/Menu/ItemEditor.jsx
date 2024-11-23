@@ -4,7 +4,8 @@ import { Button } from 'primereact/button';
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import ImageDialog from '../../common/ImageDialog';
 
-import AddFile from '../../assets/img/gallery.png';
+import LoadFile from '../../assets/img/load-photo.webp';
+import WebApp from '@twa-dev/sdk';
 
 function ItemEditor({ item, onChange, onDelete }) {
   const [visible, setVisible] = useState(false);
@@ -17,7 +18,6 @@ function ItemEditor({ item, onChange, onDelete }) {
   };
 
   const submit = () => {
-    toastBC.current.clear();
     onDelete();
     setVisible(false);
   };
@@ -38,28 +38,14 @@ function ItemEditor({ item, onChange, onDelete }) {
   };
 
   const confirm = () => {
-    if (!visible) {
-      setVisible(true);
-      toastBC.current.clear();
-      toastBC.current.show({
-        severity: 'success',
-        summary: 'Вы действительно хотите удалить блюдо? Это действие безвозвратно!',
-        sticky: true,
-        content: (props) => (
-          <div className="flex flex-col align-items-left text-dark">
-            <div className="flex align-items-center gap-2">
-              <span className="font-bold text-900">Удалить блюдо {item.name}</span>
-            </div>
-            <div className="font-medium text-lg my-3 text-900">{props.message.summary}</div>
-            <Button
-              className="bg-orange-600 text-white p-2 flex self-start"
-              label="Подтвердить"
-              severity="success"
-              onClick={submit}></Button>
-          </div>
-        ),
-      });
-    }
+    WebApp.showConfirm(
+      `Вы действительно хотите удалить ${item.name === '' ? 'новое блюдо' : item.name}? Это действие безвозвратно!`,
+      (confirmed) => {
+        if (confirmed) {
+          submit();
+        }
+      }
+    );
   };
 
   const inputClassName =
@@ -72,7 +58,7 @@ function ItemEditor({ item, onChange, onDelete }) {
       </div>
       <div className="flex w-full justify-between items-start flex-row mb-2">
         <div className='flex flex-col'>
-          <button onClick={() => setDialogVisible(true)} className="relative">
+          <button onClick={() => setDialogVisible(true)} className="relative min-w-40 min-h-28 max-w-40 max-h-28">
             <img
               src={item.image}
               width={40}
@@ -80,10 +66,13 @@ function ItemEditor({ item, onChange, onDelete }) {
               quality={100}
               sizes="50%"
               className="rounded-m min-w-40 min-h-28 max-w-40 max-h-28 object-cover"
-              alt="pic"
+              alt=""
             />
-            <div className="w-16 h-16 rounded-tl-3xl bg-white flex justify-center items-center dark:bg-black absolute right-[-6px] bottom-[-6px]">
-              <img className="w-10 h-10" src={AddFile} alt="Выбрать файл" />
+            <div className="w-full h-full bg-white flex justify-center items-center dark:bg-black absolute left-0 top-0 right-0 bottom-0 opacity-50">
+            </div>
+            <div className="w-full h-full absolute left-0 top-0 right-0 bottom-0 flex flex-col justify-center items-center">
+              <img className="w-10 h-10 shadow-md" src={LoadFile} alt="Выбрать файл" />
+              <span className="text-black font-bold dark:text-white text-base shadow-md">{item.image === '' ? 'Загрузить' : 'Заменить'}</span>
             </div>
           </button>
           <input
