@@ -66,6 +66,7 @@ const Contacts = () => {
               placeholder="Телефон"
               onChange={handleChange}
               value={data.phoneNumber || ''}
+              inputMode="numeric"
             />
           </div>
         </div>
@@ -89,21 +90,23 @@ const Contacts = () => {
             <span className="font-bold dark:text-white mb-2">Режим работы:</span>
             <span className="text-sm font-bold dark:text-white my-1">Открытие:</span>
             <input
-              type="text"
-              name="schedule"
+              type="number"
+              name="scheduleStart"
               className={inputClassName}
               placeholder="Открытие"
               onChange={handleChange}
               value={data.scheduleStart || ''}
+              inputMode="numeric"
             />
             <span className="text-sm font-bold dark:text-white my-1">Закрытие:</span>
             <input
-              type="text"
-              name="schedule"
+              type="number"
+              name="scheduleEnd"
               className={inputClassName}
               placeholder="Закрытие"
               onChange={handleChange}
               value={data.scheduleEnd || ''}
+              inputMode="numeric"
             />
           </div>
         </div>

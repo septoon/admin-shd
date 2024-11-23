@@ -1,4 +1,3 @@
-import WebApp from '@twa-dev/sdk';
 import React, { useRef, useState } from 'react';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
@@ -29,7 +28,7 @@ function ItemEditor({ item, onChange, onDelete }) {
   };
 
   const toggleStopList = () => {
-    WebApp.HapticFeedback.impactOccurred('soft');
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('soft');
     onChange({ ...item, onStop: !item.onStop });
   };
 

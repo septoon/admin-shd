@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ItemEditor from './ItemEditor';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import { memo } from 'react';
-import WebApp from '@twa-dev/sdk';
 import '../../custom.css';
 
 function CategoryEditor({ category, items, onUpdate }) {
@@ -12,7 +11,7 @@ function CategoryEditor({ category, items, onUpdate }) {
   const handleChange = (index, updatedItem) => {
     const newItems = editingItems.map((item, i) => (i === index ? updatedItem : item));
     setEditingItems(newItems);
-    onUpdate(newItems); // Передаем обновленные элементы в Menu
+    onUpdate(newItems);
   };
 
   const addItem = () => {
@@ -41,7 +40,7 @@ function CategoryEditor({ category, items, onUpdate }) {
         
         <AccordionTab 
           contentClassName='px-0 w-full m-0 [&_.p-accordion-content]:p-0 [&_.p-accordion-content]:dark:bg-black'
-          onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
+          onClick={() => window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')}
           headerClassName='font-bold dark:text-white [&_.p-accordion-header-link]:!bg-silver [&_.p-accordion-header-link]:dark:!bg-dark'
           key={category}
           header={
