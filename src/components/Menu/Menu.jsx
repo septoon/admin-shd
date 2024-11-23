@@ -42,7 +42,7 @@ const Menu = () => {
 
     setTimeout(() => {
       navigate('/admin-shd');
-    }, 200);
+    }, 300);
   };
 
   const saveData = () => {

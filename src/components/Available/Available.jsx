@@ -41,7 +41,7 @@ const Available = () => {
 
     setTimeout(() => {
       navigate('/admin-shd');
-    }, 200);
+    }, 300);
   };
 
   const handleChange = (e) => {
@@ -67,7 +67,7 @@ const Available = () => {
   const inputWrapper =
     'flex items-center py-3 w-full border-b border-gray-300 dark:border-dark-switch';
   const inputClassName =
-    'pl-2 py-0 w-full h-auto min-h-6 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
+    'pl-2 py-0 w-full h-auto border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
   const visibleAvailable = data.isNotAvailable ? 'flex items-center my-3 w-full opacity-1' : 'flex items-center my-3 w-full opacity-35'
   
   if (loading) {
@@ -99,8 +99,8 @@ const Available = () => {
 
         <div className={visibleAvailable}>
           <div className="flex flex-col w-full">
-            <span className="font-bold dark:text-white">Контент:</span>
-            <input
+            <span className="font-bold dark:text-white mb-2">Почему сайт недоступен:</span>
+            <textarea
               name="content"
               className={inputClassName}
               disabled={!data.isNotAvailable}

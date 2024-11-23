@@ -51,7 +51,7 @@ const Delivery = () => {
 
     setTimeout(() => {
       navigate('/admin-shd');
-    }, 200);
+    }, 300);
   };
 
   const saveData = () => {

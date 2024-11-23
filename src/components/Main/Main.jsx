@@ -9,7 +9,7 @@ import { chatIds } from '../../common/access';
 import './Main.css';
 
 const Main = () => {
-  const [animationClass, setAnimationClass] = useState('page-enter');
+  const [animationClass, setAnimationClass] = useState('page');
   const navigate = useNavigate();
   const userId = window.Telegram?.WebApp.initDataUnsafe.user.id;
 
@@ -34,7 +34,7 @@ const Main = () => {
 
     setTimeout(() => {
       navigate(path);
-    }, 200);
+    }, 300);
   };
 
   return (
