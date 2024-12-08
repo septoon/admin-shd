@@ -15,7 +15,7 @@ const Available = () => {
   useEffect(() => {
     setAnimationClass('page-el-enter-active');
     axios
-      .get(`https://api.shashlichny-dom.ru/available.json?t=${Date.now()}`)
+      .get(`${process.env.REACT_APP_URL}/available.json?t=${Date.now()}`)
       .then((response) => {
         setData(response.data);
       })
@@ -56,7 +56,7 @@ const Available = () => {
   const saveData = () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
     axios
-      .put('https://api.shashlichny-dom.ru/api/save/available.json', data)
+      .put(`${process.env.REACT_APP_URL}/api/save/available.json`, data)
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -68,8 +68,10 @@ const Available = () => {
     'flex items-center py-3 w-full border-b border-gray-300 dark:border-dark-switch';
   const inputClassName =
     'pl-2 py-0 w-full h-auto border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
-  const visibleAvailable = data.isNotAvailable ? 'flex items-center my-3 w-full opacity-1' : 'flex items-center my-3 w-full opacity-35'
-  
+  const visibleAvailable = data.isNotAvailable
+    ? 'flex items-center my-3 w-full opacity-1'
+    : 'flex items-center my-3 w-full opacity-35';
+
   if (loading) {
     return <Loader />;
   }

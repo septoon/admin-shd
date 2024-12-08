@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import WebApp from '@twa-dev/sdk';
 import Loader from '../../common/Loader/Loader';
 import Switch from '../Switch/Switch';
-import '../../index.css'
+import '../../index.css';
 
 const Delivery = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Delivery = () => {
     deliveryStart: '',
     deliveryEnd: '',
     minDeliveryAmount: '',
-    deliveryCost: ''
+    deliveryCost: '',
   });
   const [loading, setLoading] = useState(true);
   const [animationClass, setAnimationClass] = useState('page-el-enter');
@@ -24,7 +24,7 @@ const Delivery = () => {
   useEffect(() => {
     setAnimationClass('page-el-enter-active');
     axios
-      .get(`https://api.shashlichny-dom.ru/delivery.json?t=${Date.now()}`)
+      .get(`${process.env.REACT_APP_URL}/delivery.json?t=${Date.now()}`)
       .then((response) => {
         setData(response.data);
       })
@@ -57,7 +57,7 @@ const Delivery = () => {
   const saveData = () => {
     WebApp.HapticFeedback.impactOccurred('heavy');
     axios
-      .put('https://api.shashlichny-dom.ru/api/save/delivery.json', data)
+      .put(`${process.env.REACT_APP_URL}/api/save/delivery.json`, data)
       .then(() => toast.success('Данные успешно обновлены!'))
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -65,40 +65,40 @@ const Delivery = () => {
       });
   };
 
-  const visiblePaid = data.paidDelivery ? 'flex items-center my-3 w-full opacity-1' : 'flex items-center my-3 w-full opacity-35'
+  const visiblePaid = data.paidDelivery
+    ? 'flex items-center my-3 w-full opacity-1'
+    : 'flex items-center my-3 w-full opacity-35';
 
   if (loading) {
-    return <Loader />
+    return <Loader />;
   }
 
-  const inputWrapper = 'flex items-center py-3 w-full border-b border-gray-300 dark:border-dark-switch'
-  const inputClassName = 'pl-2 py-0 w-14 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
+  const inputWrapper =
+    'flex items-center py-3 w-full border-b border-gray-300 dark:border-dark-switch';
+  const inputClassName =
+    'pl-2 py-0 w-14 border border-gray-300 focus:outline-none dark:border-dark-switch dark:bg-dark dark:text-white rounded';
 
   return (
-    <div className={`w-full h-full flex flex-col justify-center items-center pt-4 page-el ${animationClass}`}>
-      
-      <div className='w-full flex flex-col px-3'>
+    <div
+      className={`w-full h-full flex flex-col justify-center items-center pt-4 page-el ${animationClass}`}>
+      <div className="w-full flex flex-col px-3">
         <div className={inputWrapper}>
-          <div className='flex justify-between items-center w-full'>
-            <span className='font-bold dark:text-white'>Платная доставка:</span>
-            <Switch
-              value={data.paidDelivery}
-              onColor="#4DD863"
-              handleToggle={handleChange}
-            />
+          <div className="flex justify-between items-center w-full">
+            <span className="font-bold dark:text-white">Платная доставка:</span>
+            <Switch value={data.paidDelivery} onColor="#4DD863" handleToggle={handleChange} />
           </div>
         </div>
 
         <div className={inputWrapper}>
-          <div className='flex flex-col'>
-            <span className='font-bold dark:text-white'>Начало доставки:</span>
+          <div className="flex flex-col">
+            <span className="font-bold dark:text-white">Начало доставки:</span>
             <div>
               <span className="text-gray-500"> с </span>
               <input
                 type="number"
                 name="deliveryStart"
                 className={inputClassName}
-                placeholder='Начало доставки'
+                placeholder="Начало доставки"
                 onChange={handleChange}
                 value={data.deliveryStart || ''}
                 inputMode="numeric"
@@ -109,15 +109,15 @@ const Delivery = () => {
         </div>
 
         <div className={inputWrapper}>
-          <div className='flex flex-col'>
-            <span className='font-bold dark:text-white'>Конец доставки:</span>
+          <div className="flex flex-col">
+            <span className="font-bold dark:text-white">Конец доставки:</span>
             <div>
               <span className="text-gray-500"> до </span>
               <input
                 type="number"
                 name="deliveryEnd"
                 className={inputClassName}
-                placeholder='Конец доставки'
+                placeholder="Конец доставки"
                 onChange={handleChange}
                 value={data.deliveryEnd || ''}
                 inputMode="numeric"
@@ -128,14 +128,14 @@ const Delivery = () => {
         </div>
 
         <div className={inputWrapper}>
-          <div className='flex flex-col'>
-            <span className='font-bold dark:text-white'>Минимальная сумма заказа:</span>
+          <div className="flex flex-col">
+            <span className="font-bold dark:text-white">Минимальная сумма заказа:</span>
             <div>
               <input
                 type="number"
                 name="minDeliveryAmount"
                 className={inputClassName}
-                placeholder='Минимальная сумма'
+                placeholder="Минимальная сумма"
                 onChange={handleChange}
                 value={data.minDeliveryAmount || ''}
                 inputMode="numeric"
@@ -146,15 +146,15 @@ const Delivery = () => {
         </div>
 
         <div className={visiblePaid}>
-          <div className='flex flex-col'>
-            <span className='font-bold dark:text-white'>Стоимость доставки:</span>
+          <div className="flex flex-col">
+            <span className="font-bold dark:text-white">Стоимость доставки:</span>
             <div>
               <input
                 type="number"
                 name="deliveryCost"
                 disabled={!data.paidDelivery}
                 className={inputClassName}
-                placeholder='Стоимость доставки'
+                placeholder="Стоимость доставки"
                 onChange={handleChange}
                 value={data.deliveryCost || ''}
                 inputMode="numeric"
@@ -166,7 +166,7 @@ const Delivery = () => {
       </div>
 
       <BackButton onClick={handleNavigation} />
-      <MainButton text='Сохранить изменения' onClick={saveData} />
+      <MainButton text="Сохранить изменения" onClick={saveData} />
     </div>
   );
 };
