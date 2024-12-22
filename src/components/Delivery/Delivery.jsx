@@ -17,6 +17,8 @@ const Delivery = () => {
     deliveryEnd: '',
     minDeliveryAmount: '',
     deliveryCost: '',
+    promotion: false,
+    promotionCount: 10
   });
   const [loading, setLoading] = useState(true);
   const [animationClass, setAnimationClass] = useState('page-el-enter');
@@ -66,6 +68,10 @@ const Delivery = () => {
   };
 
   const visiblePaid = data.paidDelivery
+    ? 'flex items-center my-3 w-full opacity-1'
+    : 'flex items-center my-3 w-full opacity-35';
+
+  const visiblePromotion = data.promotion
     ? 'flex items-center my-3 w-full opacity-1'
     : 'flex items-center my-3 w-full opacity-35';
 
@@ -157,6 +163,30 @@ const Delivery = () => {
                 placeholder="Стоимость доставки"
                 onChange={handleChange}
                 value={data.deliveryCost || ''}
+                inputMode="numeric"
+              />
+              <span className="text-gray-500"> ₽</span>
+            </div>
+          </div>
+        </div>
+        <div className={inputWrapper}>
+          <div className="flex justify-between items-center w-full">
+            <span className="font-bold dark:text-white">Скидка:</span>
+            <Switch value={data.promotion} onColor="#4DD863" handleToggle={handleChange} />
+          </div>
+        </div>
+        <div className={visiblePromotion}>
+          <div className="flex flex-col">
+            <span className="font-bold dark:text-white">Стоимость доставки:</span>
+            <div>
+              <input
+                type="number"
+                name="promotionCost"
+                disabled={!data.promotion}
+                className={inputClassName}
+                placeholder="Сумма скидки"
+                onChange={handleChange}
+                value={data.promotionCount || ''}
                 inputMode="numeric"
               />
               <span className="text-gray-500"> ₽</span>
