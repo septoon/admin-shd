@@ -91,7 +91,7 @@ const Delivery = () => {
         <div className={inputWrapper}>
           <div className="flex justify-between items-center w-full">
             <span className="font-bold dark:text-white">Платная доставка:</span>
-            <Switch value={data.paidDelivery} onColor="#4DD863" handleToggle={handleChange} />
+            <Switch value={data.paidDelivery} name="paidDelivery" onColor="#4DD863" handleToggle={handleChange} />
           </div>
         </div>
 
@@ -153,7 +153,7 @@ const Delivery = () => {
 
         <div className={visiblePaid}>
           <div className="flex flex-col">
-            <span className="font-bold dark:text-white">Стоимость доставки:</span>
+            <span className="font-bold dark:text-white mb-2">Стоимость доставки:</span>
             <div>
               <input
                 type="number"
@@ -172,16 +172,16 @@ const Delivery = () => {
         <div className={inputWrapper}>
           <div className="flex justify-between items-center w-full">
             <span className="font-bold dark:text-white">Скидка:</span>
-            <Switch value={data.promotion} onColor="#4DD863" handleToggle={handleChange} />
+            <Switch value={data.promotion} name="promotion" onColor="#4DD863" handleToggle={handleChange} />
           </div>
         </div>
         <div className={visiblePromotion}>
           <div className="flex flex-col">
-            <span className="font-bold dark:text-white">Стоимость доставки:</span>
+            <span className="font-bold dark:text-white mb-2">Сумма скидки:</span>
             <div>
               <input
                 type="number"
-                name="promotionCost"
+                name="promotionCount"
                 disabled={!data.promotion}
                 className={inputClassName}
                 placeholder="Сумма скидки"
@@ -189,7 +189,7 @@ const Delivery = () => {
                 value={data.promotionCount || ''}
                 inputMode="numeric"
               />
-              <span className="text-gray-500"> ₽</span>
+              <span className="text-gray-500"> %</span>
             </div>
           </div>
         </div>
