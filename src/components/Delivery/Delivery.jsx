@@ -40,17 +40,18 @@ const Delivery = () => {
   }, []);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    type === 'checkbox' && WebApp.HapticFeedback.impactOccurred('medium');
+    const { name, type, checked, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
+    if (type === "checkbox") {
+      WebApp.HapticFeedback.impactOccurred("medium");
+    }
   };
 
   const handleNavigation = () => {
     setAnimationClass('page-el-exit-active');
-
     setTimeout(() => {
       navigate('/admin-shd');
     }, 300);

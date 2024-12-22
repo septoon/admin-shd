@@ -9,13 +9,13 @@ const Switch = ({ value, name, handleToggle, onColor }) => {
         name={name}
         onChange={handleToggle}
         className="react-switch-checkbox"
-        id={`react-switch-new`}
+        id={`react-switch-${name}`}
         type="checkbox"
       />
       <label
         style={{ background: value && onColor }}
         className="react-switch-label"
-        htmlFor={`react-switch-new`}
+        htmlFor={`react-switch-${name}`}
       >
         <span className={`react-switch-button`} />
       </label>
