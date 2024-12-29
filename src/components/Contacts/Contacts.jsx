@@ -39,7 +39,10 @@ const Contacts = () => {
     const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]:
+        ["scheduleStart", "scheduleEnd"].includes(name)
+          ? Number(value)
+          : value,
     }));
   };
 

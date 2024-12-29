@@ -24,7 +24,15 @@ function ItemEditor({ item, onChange, onDelete }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    onChange({ ...item, [name]: value});
+    let newValue = value;
+
+    // Если имя поля среди перечисленных — приводим к числу
+    if (['serving', 'weight', 'price'].includes(name)) {
+      // Можно использовать parseFloat или Number,
+      // в зависимости от того, нужны ли десятичные значения
+      newValue = parseFloat(value) || 0;
+    }
+    onChange({ ...item, [name]: newValue});
   };
 
   const toggleStopList = () => {

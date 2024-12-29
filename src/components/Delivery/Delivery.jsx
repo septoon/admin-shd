@@ -43,8 +43,14 @@ const Delivery = () => {
     const { name, type, checked, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox"
+        ? checked
+        : // Проверяем нужные поля и конвертируем в число
+          ["deliveryStart", "deliveryEnd", "minDeliveryAmount", "deliveryCost", "promotionCount"].includes(name)
+            ? Number(value)
+            : value,
     }));
+  
     if (type === "checkbox") {
       WebApp.HapticFeedback.impactOccurred("medium");
     }
