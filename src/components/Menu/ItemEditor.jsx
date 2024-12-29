@@ -27,7 +27,7 @@ function ItemEditor({ item, onChange, onDelete }) {
     let newValue = value;
 
     // Если имя поля среди перечисленных — приводим к числу
-    if (['serving', 'weight', 'price'].includes(name)) {
+    if (['weight', 'price'].includes(name)) {
       // Можно использовать parseFloat или Number,
       // в зависимости от того, нужны ли десятичные значения
       newValue = parseFloat(value) || 0;
